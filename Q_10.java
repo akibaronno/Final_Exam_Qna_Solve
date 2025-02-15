@@ -1,25 +1,39 @@
-public class Q_10 {
+import java.util.Scanner;
+
+public class factorion {
     public static void main(String[] args) {
-        if (args.length < 2) {
-            System.out.println("Error: Please provide two integer values.");
-            return;
+
+        Scanner sc = new Scanner(System.in);
+       
+        int range1,range2;
+        System.out.print("Enter the lower bound of the range: ");
+        range1 = sc.nextInt();
+        System.out.print("Enter the upper bound of the range: ");
+        range2 = sc.nextInt();
+        System.out.println("Factorion numbers in the range: ");
+        for (int num = range1; num <=range2; num ++){
+
+       //int n = sc.nextInt();
+        int currentNum =num;
+        int sum = 0;
+        int fact = 1;
+      while(currentNum> 0){
+          int digit = currentNum%10;
+          //System.out.println(digit);
+          currentNum/=10; 
+          for(int i = 2; i <= digit ; i++){
+              fact = fact*i; 
+              //System.out.println(fact); 
+          }
+          sum += fact;
+          fact = 1;
+      }  
+     // System.out.println(sum);
+      
+      if(sum==num){
+        System.out.print(num+", ");
+        
         }
-
-        try {
-            int num1 = Integer.parseInt(args[0]);
-            int num2 = Integer.parseInt(args[1]);
-
-            System.out.println("Sum: " + (num1 + num2));
-            System.out.println("Difference: " + (num1 - num2));
-            System.out.println("Product: " + (num1 * num2));
-
-            if (num2 != 0) {
-                System.out.println("Quotient: " + (num1 / num2));
-            } else {
-                System.out.println("Error: Division by zero is not allowed.");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Please enter valid integer values.");
-        }
-    } 
+      }
+}
 }
